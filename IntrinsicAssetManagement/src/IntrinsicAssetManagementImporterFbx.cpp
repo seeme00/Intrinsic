@@ -191,6 +191,7 @@ void ImporterFbx::importMesh(FbxMesh* p_Mesh)
 
   _INTR_ARRAY(uint32_t) polygonCountPerSubMesh;
 
+  
   // Find the amount of sub meshes/materials
   if (matMappingMode == FbxGeometryElement::eAllSame)
   {
@@ -200,6 +201,9 @@ void ImporterFbx::importMesh(FbxMesh* p_Mesh)
   }
   else if (matMappingMode == FbxGeometryElement::eByPolygon)
   {
+    // Split by material
+    // Note that you must be in eByPolygon mapping mode for this to work
+    
     for (uint32_t pIdx = 0u; pIdx < (uint32_t)triangleMesh->GetPolygonCount();
          ++pIdx)
     {
